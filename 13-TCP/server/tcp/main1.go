@@ -1,7 +1,7 @@
 package main
 
 import (
-	"Go-basic/13-Socket/common"
+	"Go-basic/13-TCP/common"
 	"fmt"
 	"net"
 	"strings"
@@ -16,12 +16,12 @@ func readDataGram(conn net.Conn) []string {
 	content := make([]byte, 1024)
 	n, err := conn.Read(content)
 	common.CheckError(err)
-	beginIndex := 0
+	var beginIndex = 0
 	var j = 0
 	for i := 0; i < n; i++ {
 		if content[i] == delemeter[j] {
 			if j == len(delemeter) {
-				dataGrams = append(dataGrams, string(content[0:i-len(delemeter)]))
+				dataGrams = append(dataGrams, string(content[beginIndex:i-len(delemeter)]))
 				beginIndex = i + 1
 			}
 			j += 1

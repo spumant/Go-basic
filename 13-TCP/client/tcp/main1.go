@@ -1,7 +1,7 @@
 package main
 
 import (
-	"Go-basic/13-Socket/common"
+	"Go-basic/13-TCP/common"
 	"fmt"
 	"net"
 )
